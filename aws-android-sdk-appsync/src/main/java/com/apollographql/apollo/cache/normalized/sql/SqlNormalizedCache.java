@@ -216,6 +216,9 @@ public final class SqlNormalizedCache extends NormalizedCache {
         allColumns, AppSyncSqlHelper.COLUMN_KEY + " = ?", new String[]{key},
         null, null, null);
     if (cursor == null || !cursor.moveToFirst()) {
+        if (cursor != null) {
+          cursor.close();
+        }
       return Optional.absent();
     }
     try {

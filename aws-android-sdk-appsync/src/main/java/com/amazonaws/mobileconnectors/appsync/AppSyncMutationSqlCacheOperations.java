@@ -100,6 +100,9 @@ public final class AppSyncMutationSqlCacheOperations {
                 allColumns, null, null,
                 null, null, AppSyncMutationsSqlHelper.COLUMN_ID);
         if (cursor == null || !cursor.moveToFirst()) {
+            if (cursor != null) {
+                cursor.close();
+            }
             return mutationObjects;
         }
 
